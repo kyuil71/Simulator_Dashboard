@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>TV 시뮬레이터 UX 분석기</title>
+    <title>TV 시뮬레이터 UX 분석기 - 관리자 모드</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <style>
         .hide-scrollbar::-webkit-scrollbar { display: none; }
@@ -18,7 +18,6 @@
 </head>
 <body class="bg-slate-50 text-slate-800 font-sans min-h-screen flex flex-col">
 
-    <!-- Header -->
     <header class="bg-white border-b border-slate-200 px-6 py-4 flex items-center justify-between sticky top-0 z-10 shadow-sm">
         <div class="flex items-center space-x-3">
             <div class="bg-blue-600 p-2 rounded-lg text-white">
@@ -34,7 +33,6 @@
 
     <div class="flex max-w-7xl mx-auto mt-6 px-4 gap-6 w-full flex-1 mb-12">
         
-        <!-- Sidebar Navigation -->
         <div class="w-64 shrink-0">
             <nav class="space-y-1">
                 <button onclick="switchTab('dashboard')" id="nav-dashboard" class="nav-btn w-full flex items-center space-x-3 px-4 py-3 rounded-lg text-sm font-medium transition-colors bg-blue-600 text-white shadow-md">
@@ -52,10 +50,8 @@
             </nav>
         </div>
 
-        <!-- Main Content Area -->
         <main class="flex-1 w-full relative">
             
-            <!-- Loading Indicator -->
             <div id="loading-indicator" class="absolute inset-0 flex items-center justify-center bg-slate-50 z-20">
                 <div class="flex flex-col items-center text-slate-500">
                     <svg class="animate-spin h-8 w-8 mb-4" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"><circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle><path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path></svg>
@@ -63,9 +59,7 @@
                 </div>
             </div>
 
-            <!-- Tab 1: Dashboard -->
             <div id="tab-dashboard" class="tab-content active space-y-6">
-                <!-- Summary Cards -->
                 <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
                     <div class="bg-white p-6 rounded-xl border border-slate-200 shadow-sm flex items-center space-x-4">
                         <div class="p-3 bg-indigo-50 text-indigo-600 rounded-full">
@@ -96,50 +90,36 @@
                     </div>
                 </div>
 
-                <!-- Charts Row -->
                 <div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
-                    <!-- Most Clicked Buttons -->
                     <div class="bg-white rounded-xl border border-slate-200 shadow-sm p-6">
-                        <div class="flex items-center justify-between mb-6">
-                            <h2 class="text-lg font-bold text-slate-800 flex items-center">
-                                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="mr-2 text-blue-500"><path d="M3 3v18h18"/><path d="M18 17V9"/><path d="M13 17V5"/><path d="M8 17v-3"/></svg>
-                                가장 많이 누른 버튼 Top 10
-                            </h2>
-                        </div>
+                        <h2 class="text-lg font-bold text-slate-800 flex items-center mb-6">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="mr-2 text-blue-500"><path d="M3 3v18h18"/><path d="M18 17V9"/><path d="M13 17V5"/><path d="M8 17v-3"/></svg>
+                            가장 많이 누른 버튼 Top 10
+                        </h2>
                         <div id="chart-top-buttons" class="space-y-4">
-                            <!-- 데이터가 여기에 렌더링 됩니다 -->
                             <p class="text-slate-400 text-center py-8">데이터가 없습니다.</p>
                         </div>
                     </div>
-
-                    <!-- Dwell Times -->
                     <div class="bg-white rounded-xl border border-slate-200 shadow-sm p-6">
-                        <div class="flex items-center justify-between mb-6">
-                            <h2 class="text-lg font-bold text-slate-800 flex items-center">
-                                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="mr-2 text-amber-500"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
-                                누른 후 화면 체류 시간이 긴 버튼
-                            </h2>
-                        </div>
+                        <h2 class="text-lg font-bold text-slate-800 flex items-center mb-6">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="mr-2 text-amber-500"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+                            누른 후 화면 체류 시간이 긴 버튼
+                        </h2>
                         <div id="chart-dwell-times" class="space-y-4">
-                            <!-- 데이터가 여기에 렌더링 됩니다 -->
                             <p class="text-slate-400 text-center py-8">데이터가 없습니다.</p>
                         </div>
                     </div>
                 </div>
             </div>
 
-            <!-- Tab 2: Flows -->
             <div id="tab-flows" class="tab-content space-y-6">
                 <div class="bg-white rounded-xl border border-slate-200 shadow-sm p-6">
                     <h2 class="text-lg font-bold text-slate-800 flex items-center mb-6">
                         <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="mr-2 text-emerald-500"><circle cx="6" cy="19" r="3"/><path d="M9 19h8.5a3.5 3.5 0 0 0 0-7h-11a3.5 3.5 0 0 1 0-7H15"/><circle cx="18" cy="5" r="3"/></svg>
-                        가장 빈번한 사용자 행동 패턴 (플로우)
+                        가장 빈번한 사용자 행동 패턴
                     </h2>
-                    <div id="list-flow-patterns" class="space-y-4">
-                        <!-- 데이터가 여기에 렌더링 됩니다 -->
-                    </div>
+                    <div id="list-flow-patterns" class="space-y-4"></div>
                 </div>
-
                 <div class="bg-white rounded-xl border border-slate-200 shadow-sm p-6">
                     <h2 class="text-lg font-bold text-slate-800 mb-4">최근 사용자 세션 로그</h2>
                     <div class="overflow-x-auto">
@@ -151,60 +131,48 @@
                                     <th class="pb-3 font-medium">클릭한 요소</th>
                                 </tr>
                             </thead>
-                            <tbody id="list-recent-events">
-                                <!-- 데이터가 여기에 렌더링 됩니다 -->
-                            </tbody>
+                            <tbody id="list-recent-events"></tbody>
                         </table>
                     </div>
                 </div>
             </div>
 
-            <!-- Tab 3: Integration -->
             <div id="tab-integration" class="tab-content bg-white rounded-xl border border-slate-200 shadow-sm p-6">
                 <h2 class="text-lg font-bold text-slate-800 flex items-center mb-2">
                     <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="mr-2 text-indigo-500"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg>
                     TV 시뮬레이터에 추적 스크립트 연동하기
                 </h2>
-                <p class="text-slate-600 mb-6 text-sm">
-                    사용자님의 TV 시뮬레이터 프로젝트(HTML 파일)에 아래 코드를 추가하시면, 버튼 클릭 이벤트와 체류 시간이 자동으로 현재 이 대시보드로 수집됩니다.
-                </p>
-                
-                <div class="bg-slate-900 rounded-lg p-4 relative overflow-hidden group">
-                    <button onclick="copyIntegrationCode()" class="absolute top-3 right-3 bg-slate-700 hover:bg-slate-600 text-white text-xs px-3 py-1.5 rounded transition-opacity">
-                        코드 복사하기
-                    </button>
+                <div class="bg-slate-900 rounded-lg p-4 relative overflow-hidden group mb-6">
+                    <button onclick="copyIntegrationCode()" class="absolute top-3 right-3 bg-slate-700 hover:bg-slate-600 text-white text-xs px-3 py-1.5 rounded">코드 복사하기</button>
                     <pre class="text-slate-300 text-sm font-mono overflow-x-auto whitespace-pre-wrap"><code id="code-snippet"></code></pre>
                 </div>
-                
                 <div class="mt-6 space-y-3 text-sm text-slate-600 bg-blue-50 p-4 rounded-lg border border-blue-100">
-                    <p class="font-bold text-blue-800">💡 설치 방법:</p>
+                    <p class="font-bold text-blue-800">💡 연동 방법:</p>
                     <ol class="list-decimal list-inside space-y-2">
-                        <li>위 [코드 복사하기] 버튼을 누릅니다.</li>
-                        <li>TV 시뮬레이터의 <code class="bg-white px-1 py-0.5 rounded text-blue-600 border border-blue-200">index.html</code> 파일을 엽니다.</li>
-                        <li>파일 맨 아래의 <code class="bg-white px-1 py-0.5 rounded text-blue-600 border border-blue-200">&lt;/body&gt;</code> 태그 <strong>바로 위에</strong> 복사한 코드를 붙여넣기 합니다.</li>
-                        <li>수정된 사이트를 저장하고 다시 엽니다.</li>
-                        <li>이제 화면에서 버튼을 누를 때마다 이 대시보드에 실시간으로 집계됩니다!</li>
+                        <li>위 코드를 복사하여 TV 시뮬레이터의 <code>index.html</code> 하단 <code>&lt;/body&gt;</code> 앞에 붙여넣으세요.</li>
+                        <li>이제 사용자들이 버튼을 누르면 이 대시보드에 실시간으로 데이터가 쌓입니다.</li>
                     </ol>
                 </div>
             </div>
-
         </main>
     </div>
 
-    <!-- Firebase & Logic Script -->
     <script type="module">
         import { initializeApp } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-app.js";
-        import { getAuth, signInAnonymously, signInWithCustomToken, onAuthStateChanged } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-auth.js";
+        import { getAuth, signInAnonymously, onAuthStateChanged } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-auth.js";
         import { getFirestore, collection, addDoc, onSnapshot, query } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-firestore.js";
 
-        // 환경 변수 설정
-        const firebaseConfig = typeof __firebase_config !== 'undefined' ? JSON.parse(__firebase_config) : {
-             // Fallback for local testing
-             apiKey: "demo-key", projectId: "demo-project"
+        // 사용자님이 제공해주신 API 키와 프로젝트 정보를 설정했습니다.
+        const firebaseConfig = {
+            apiKey: "AIzaSyAAYNgibjfk61ZVOiCGeIwpkornY700KtM",
+            authDomain: "prototype-kyuil.firebaseapp.com",
+            projectId: "prototype-kyuil",
+            storageBucket: "prototype-kyuil.appspot.com",
+            messagingSenderId: "64201667970",
+            appId: "1:64201667970:web:ae247a6e7021a267a34b9b"
         };
-        const appId = typeof __app_id !== 'undefined' ? __app_id : 'tv-simulator-html-test';
+        const appId = 'tv-simulator-v1';
 
-        // Firebase 초기화
         const app = initializeApp(firebaseConfig);
         const auth = getAuth(app);
         const db = getFirestore(app);
@@ -212,299 +180,161 @@
         let currentUser = null;
         let allEvents = [];
 
-        // UI 요소
-        const loadingIndicator = document.getElementById('loading-indicator');
-        const btnGenerateMock = document.getElementById('btn-generate-mock');
-        const iconRefresh = document.getElementById('icon-refresh');
-        
-        // 탭 전환 스크립트 (전역 함수로 노출)
+        // Tab Switcher
         window.switchTab = function(tabName) {
             document.querySelectorAll('.tab-content').forEach(el => el.classList.remove('active'));
             document.querySelectorAll('.nav-btn').forEach(el => {
                 el.classList.remove('bg-blue-600', 'text-white', 'shadow-md');
                 el.classList.add('text-slate-600', 'hover:bg-slate-100');
             });
-            
             document.getElementById(`tab-${tabName}`).classList.add('active');
             const activeBtn = document.getElementById(`nav-${tabName}`);
-            activeBtn.classList.remove('text-slate-600', 'hover:bg-slate-100');
             activeBtn.classList.add('bg-blue-600', 'text-white', 'shadow-md');
         };
 
-        // 연동 코드 생성 및 표시
+        // UI Helpers
+        const loadingIndicator = document.getElementById('loading-indicator');
+        const btnGenerateMock = document.getElementById('btn-generate-mock');
+        const iconRefresh = document.getElementById('icon-refresh');
+
+        // Integration Code Generation
         const generateIntegrationScript = () => {
-            const scriptStr = `
-<!-- TV 시뮬레이터 UI 추적 스크립트 -->
-<script type="module">
-  import { initializeApp } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-app.js";
-  import { getAuth, signInAnonymously } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-auth.js";
-  import { getFirestore, collection, addDoc } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-firestore.js";
+            const scriptStr = `<script type="module">
+import { initializeApp } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-app.js";
+import { getAuth, signInAnonymously } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-auth.js";
+import { getFirestore, collection, addDoc } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-firestore.js";
 
-  const firebaseConfig = ${JSON.stringify(firebaseConfig)};
-  const appId = "${appId}";
-  
-  const app = initializeApp(firebaseConfig);
-  const auth = getAuth(app);
-  const db = getFirestore(app);
+const firebaseConfig = ${JSON.stringify(firebaseConfig)};
+const app = initializeApp(firebaseConfig);
+const auth = getAuth(app);
+const db = getFirestore(app);
 
-  let sessionId = sessionStorage.getItem('tv_test_session');
-  if (!sessionId) {
-    sessionId = 'session_' + Math.random().toString(36).substr(2, 9) + '_' + Date.now();
-    sessionStorage.setItem('tv_test_session', sessionId);
-  }
+let sessionId = sessionStorage.getItem('tv_test_session') || 'sess_' + Math.random().toString(36).substr(2, 9);
+sessionStorage.setItem('tv_test_session', sessionId);
 
-  signInAnonymously(auth).then(() => {
-    console.log("TV Simulator Analytics Connected.");
+signInAnonymously(auth).then(() => {
     document.addEventListener('click', (e) => {
-      const target = e.target.closest('button') || e.target;
-      const elementId = target.id || target.getAttribute('aria-label') || target.innerText?.trim() || target.className;
-      
-      if (elementId && elementId.length > 0 && elementId.length < 50) {
-        addDoc(collection(db, 'artifacts', appId, 'public', 'data', 'ui_events'), {
-          sessionId: sessionId,
-          timestamp: Date.now(),
-          action: 'click',
-          targetId: elementId
-        }).catch(err => console.error(err));
-      }
+        const target = e.target.closest('button') || e.target;
+        const label = target.id || target.getAttribute('aria-label') || target.innerText?.trim() || target.className;
+        if (label && label.length < 50) {
+            addDoc(collection(db, 'artifacts', '${appId}', 'public', 'data', 'ui_events'), {
+                sessionId, timestamp: Date.now(), targetId: label
+            });
+        }
     });
-  });
-<\/script>`.trim();
+});
+<\/script>`;
             document.getElementById('code-snippet').textContent = scriptStr;
-            return scriptStr;
         };
-
-        window.copyIntegrationCode = function() {
-            const code = generateIntegrationScript();
-            // iframe 내에서 클립보드 복사를 위한 안전한 방식
-            const textArea = document.createElement("textarea");
-            textArea.value = code;
-            document.body.appendChild(textArea);
-            textArea.select();
-            try {
-                document.execCommand("copy");
-                alert("코드가 복사되었습니다!");
-            } catch (err) {
-                console.error('복사 실패', err);
-            }
-            document.body.removeChild(textArea);
-        };
-
         generateIntegrationScript();
 
-        // 분석 및 렌더링 로직
-        const processAndRender = (events) => {
-            const stats = {
-                totalClicks: events.length,
-                sessions: new Set(),
-                buttonCounts: {},
-                dwellTimes: {}, 
-                flows: [],
-            };
+        window.copyIntegrationCode = function() {
+            navigator.clipboard.writeText(document.getElementById('code-snippet').textContent);
+            alert("연동 코드가 복사되었습니다!");
+        };
 
+        // Data Processing
+        const processAndRender = (events) => {
+            const stats = { totalClicks: events.length, sessions: new Set(), buttonCounts: {}, dwellTimes: {}, flows: [] };
             const sessions = {};
 
             events.forEach(event => {
                 stats.sessions.add(event.sessionId);
-                if (event.targetId) {
-                    stats.buttonCounts[event.targetId] = (stats.buttonCounts[event.targetId] || 0) + 1;
-                }
+                if (event.targetId) stats.buttonCounts[event.targetId] = (stats.buttonCounts[event.targetId] || 0) + 1;
                 if (!sessions[event.sessionId]) sessions[event.sessionId] = [];
                 sessions[event.sessionId].push(event);
             });
 
             Object.values(sessions).forEach(sessionEvents => {
                 sessionEvents.sort((a, b) => a.timestamp - b.timestamp);
-                
                 const flowPath = sessionEvents.map(e => e.targetId).filter(Boolean);
-                if (flowPath.length > 0) {
-                    stats.flows.push({ path: flowPath });
-                }
+                if (flowPath.length > 1) stats.flows.push({ path: flowPath });
 
                 for (let i = 0; i < sessionEvents.length - 1; i++) {
-                    const curr = sessionEvents[i];
-                    const next = sessionEvents[i+1];
-                    const timeDiff = next.timestamp - curr.timestamp;
-
-                    if (curr.targetId && timeDiff > 0 && timeDiff < 600000) { 
-                        if (!stats.dwellTimes[curr.targetId]) stats.dwellTimes[curr.targetId] = { total: 0, count: 0 };
-                        stats.dwellTimes[curr.targetId].total += timeDiff;
-                        stats.dwellTimes[curr.targetId].count += 1;
+                    const timeDiff = sessionEvents[i+1].timestamp - sessionEvents[i].timestamp;
+                    if (timeDiff < 600000) {
+                        const tid = sessionEvents[i].targetId;
+                        if (!stats.dwellTimes[tid]) stats.dwellTimes[tid] = { total: 0, count: 0 };
+                        stats.dwellTimes[tid].total += timeDiff;
+                        stats.dwellTimes[tid].count += 1;
                     }
                 }
             });
 
-            // Update Summary Stats
             document.getElementById('stat-total-clicks').innerText = stats.totalClicks;
             document.getElementById('stat-total-sessions').innerText = stats.sessions.size;
 
-            // Top Buttons
-            const topButtons = Object.entries(stats.buttonCounts)
-                .map(([id, count]) => ({ id, count })).sort((a, b) => b.count - a.count).slice(0, 10);
-            
-            const btnChartEl = document.getElementById('chart-top-buttons');
-            if (topButtons.length === 0) {
-                btnChartEl.innerHTML = '<p class="text-slate-400 text-center py-8">데이터가 없습니다.</p>';
-            } else {
-                const maxCount = topButtons[0].count;
-                btnChartEl.innerHTML = topButtons.map(btn => `
+            // Render Charts
+            const renderBar = (elId, data, isTime) => {
+                const el = document.getElementById(elId);
+                if (data.length === 0) { el.innerHTML = '<p class="text-slate-400 text-center py-8">데이터 없음</p>'; return; }
+                const max = data[0].val;
+                el.innerHTML = data.slice(0, 10).map(item => `
                     <div class="relative">
-                        <div class="flex justify-between text-sm mb-1">
-                            <span class="font-medium text-slate-700 truncate max-w-[200px]">${btn.id}</span>
-                            <span class="text-slate-500 font-bold">${btn.count}회</span>
-                        </div>
-                        <div class="w-full bg-slate-100 rounded-full h-2.5">
-                            <div class="bg-blue-500 h-2.5 rounded-full" style="width: ${(btn.count / maxCount) * 100}%"></div>
-                        </div>
+                        <div class="flex justify-between text-sm mb-1"><span class="font-medium text-slate-700">${item.id}</span><span class="font-bold">${item.val}${isTime ? '초' : '회'}</span></div>
+                        <div class="w-full bg-slate-100 rounded-full h-2.5"><div class="${isTime ? 'bg-amber-400' : 'bg-blue-500'} h-2.5 rounded-full" style="width: ${(item.val/max)*100}%"></div></div>
                     </div>
                 `).join('');
-            }
+            };
 
-            // Dwell Times
-            const dwellArr = Object.entries(stats.dwellTimes)
-                .map(([id, data]) => ({ id, avgTime: Math.round(data.total / data.count / 1000) }))
-                .sort((a, b) => b.avgTime - a.avgTime).slice(0, 10);
+            const btnData = Object.entries(stats.buttonCounts).map(([id, val]) => ({id, val})).sort((a,b) => b.val - a.val);
+            const dwellData = Object.entries(stats.dwellTimes).map(([id, d]) => ({id, val: Math.round(d.total/d.count/1000)})).sort((a,b) => b.val - a.val);
             
-            const sumDwell = dwellArr.reduce((acc, curr) => acc + curr.avgTime, 0);
-            document.getElementById('stat-avg-time').innerText = dwellArr.length > 0 ? `${Math.round(sumDwell / dwellArr.length)}초` : '-';
-
-            const dwellChartEl = document.getElementById('chart-dwell-times');
-            if (dwellArr.length === 0) {
-                dwellChartEl.innerHTML = '<p class="text-slate-400 text-center py-8">데이터가 없습니다.</p>';
-            } else {
-                const maxDwell = dwellArr[0].avgTime;
-                dwellChartEl.innerHTML = dwellArr.map(item => `
-                    <div class="relative">
-                        <div class="flex justify-between text-sm mb-1">
-                            <span class="font-medium text-slate-700 truncate max-w-[200px]">${item.id}</span>
-                            <span class="text-slate-500 font-bold">${item.avgTime}초</span>
-                        </div>
-                        <div class="w-full bg-slate-100 rounded-full h-2.5">
-                            <div class="bg-amber-400 h-2.5 rounded-full" style="width: ${(item.avgTime / maxDwell) * 100}%"></div>
-                        </div>
-                    </div>
-                `).join('');
-            }
-
-            // Flows
-            const flowPatterns = {};
-            stats.flows.forEach(f => {
-                const pathStr = f.path.join(' → ');
-                if(f.path.length > 1) flowPatterns[pathStr] = (flowPatterns[pathStr] || 0) + 1;
-            });
-            const topFlows = Object.entries(flowPatterns)
-                .map(([path, count]) => ({ path, count })).sort((a, b) => b.count - a.count).slice(0, 5);
+            renderBar('chart-top-buttons', btnData, false);
+            renderBar('chart-dwell-times', dwellData, true);
             
-            const flowEl = document.getElementById('list-flow-patterns');
-            if(topFlows.length === 0){
-                flowEl.innerHTML = '<p class="text-slate-400 text-center py-8">데이터가 없습니다.</p>';
-            } else {
-                flowEl.innerHTML = topFlows.map(flow => `
-                    <div class="p-4 border border-slate-100 bg-slate-50 rounded-lg flex items-center justify-between">
-                        <div class="flex-1 overflow-x-auto whitespace-nowrap hide-scrollbar">
-                            <div class="flex items-center space-x-2">
-                                ${flow.path.split(' → ').map((step, idx, arr) => `
-                                    <span class="px-3 py-1 bg-white border border-slate-200 rounded-md text-sm font-medium text-slate-700 shadow-sm">${step}</span>
-                                    ${idx < arr.length - 1 ? '<span class="text-slate-400">→</span>' : ''}
-                                `).join('')}
-                            </div>
-                        </div>
-                        <div class="ml-4 shrink-0 bg-emerald-100 text-emerald-700 px-3 py-1 rounded-full text-sm font-bold">
-                            ${flow.count}회
-                        </div>
-                    </div>
-                `).join('');
-            }
+            if (dwellData.length > 0) document.getElementById('stat-avg-time').innerText = Math.round(dwellData.reduce((a,b) => a+b.val,0)/dwellData.length) + '초';
 
-            // Recent Logs
-            const recentEvents = [...events].sort((a, b) => b.timestamp - a.timestamp).slice(0, 15);
-            const recentEl = document.getElementById('list-recent-events');
-            if(recentEvents.length === 0){
-                recentEl.innerHTML = '<tr><td colspan="3" class="py-8 text-center text-slate-400">최근 이벤트가 없습니다.</td></tr>';
-            } else {
-                recentEl.innerHTML = recentEvents.map(event => `
-                    <tr class="border-b border-slate-100 last:border-0 hover:bg-slate-50 transition-colors">
-                        <td class="py-3 text-slate-600">${new Date(event.timestamp).toLocaleTimeString('ko-KR')}</td>
-                        <td class="py-3 text-slate-500 font-mono text-xs truncate max-w-[150px]">${event.sessionId}</td>
-                        <td class="py-3 font-medium text-slate-800">${event.targetId || '알 수 없음'}</td>
-                    </tr>
-                `).join('');
-            }
+            // Flows & Logs
+            const flowCounts = {};
+            stats.flows.forEach(f => { const p = f.path.join(' → '); flowCounts[p] = (flowCounts[p] || 0) + 1; });
+            document.getElementById('list-flow-patterns').innerHTML = Object.entries(flowCounts).sort((a,b) => b[1]-a[1]).slice(0, 5).map(f => `
+                <div class="p-4 border border-slate-100 bg-slate-50 rounded-lg flex items-center justify-between overflow-hidden">
+                    <div class="flex-1 overflow-x-auto whitespace-nowrap text-sm font-medium text-slate-600">${f[0]}</div>
+                    <div class="ml-4 bg-emerald-100 text-emerald-700 px-3 py-1 rounded-full text-xs font-bold">${f[1]}회</div>
+                </div>
+            `).join('');
+
+            document.getElementById('list-recent-events').innerHTML = events.sort((a,b) => b.timestamp - a.timestamp).slice(0, 15).map(e => `
+                <tr class="border-b border-slate-100 hover:bg-slate-50 transition-colors">
+                    <td class="py-3 text-slate-600">${new Date(e.timestamp).toLocaleTimeString()}</td>
+                    <td class="py-3 text-slate-400 font-mono text-xs">${e.sessionId.substr(0,8)}</td>
+                    <td class="py-3 font-medium text-slate-800">${e.targetId}</td>
+                </tr>
+            `).join('');
         };
 
-        // Firebase 인증 및 구독 시작
-        const initDashboard = async () => {
-            try {
-                if (typeof __initial_auth_token !== 'undefined' && __initial_auth_token) {
-                    await signInWithCustomToken(auth, __initial_auth_token);
-                } else {
-                    await signInAnonymously(auth);
-                }
-            } catch (error) {
-                console.error("Auth Error:", error);
-                loadingIndicator.innerHTML = `<p class="text-red-500">인증 오류가 발생했습니다.</p>`;
-            }
-        };
-
+        // Firebase Initialization
         onAuthStateChanged(auth, (user) => {
             if (user) {
                 currentUser = user;
-                const eventsRef = collection(db, 'artifacts', appId, 'public', 'data', 'ui_events');
-                
-                onSnapshot(query(eventsRef), (snapshot) => {
-                    allEvents = [];
-                    snapshot.forEach((doc) => {
-                        allEvents.push({ id: doc.id, ...doc.data() });
-                    });
+                onSnapshot(collection(db, 'artifacts', appId, 'public', 'data', 'ui_events'), (snap) => {
+                    allEvents = []; snap.forEach(doc => allEvents.push(doc.data()));
                     processAndRender(allEvents);
                     loadingIndicator.style.display = 'none';
-                }, (error) => {
-                    console.error("데이터 수집 오류:", error);
-                    loadingIndicator.innerHTML = `<p class="text-red-500">데이터 수집 오류: ${error.message}</p>`;
                 });
+            } else {
+                signInAnonymously(auth);
             }
         });
 
-        initDashboard();
-
-        // 테스트 데이터 생성 로직
-        btnGenerateMock.addEventListener('click', async () => {
+        // Mock Data Generator
+        btnGenerateMock.onclick = async () => {
             if (!currentUser) return;
-            
             btnGenerateMock.disabled = true;
             iconRefresh.classList.add('animate-spin');
-            
-            const eventsRef = collection(db, 'artifacts', appId, 'public', 'data', 'ui_events');
-            const mockButtons = ['Power', 'Vol +', 'Vol -', 'CH +', 'CH -', 'Netflix', 'YouTube', 'Home', 'Settings', 'Mute', 'Enter'];
-            
-            const numSessions = Math.floor(Math.random() * 3) + 3;
-            for (let i = 0; i < numSessions; i++) {
-                const sessionId = `mock-session-${Math.random().toString(36).substr(2, 9)}`;
-                let currentTime = Date.now() - Math.floor(Math.random() * 86400000); 
-                const numClicks = Math.floor(Math.random() * 10) + 5; 
-                
-                let currentButton = 'Power';
-                
-                for (let j = 0; j < numClicks; j++) {
-                    await addDoc(eventsRef, {
-                        sessionId,
-                        timestamp: currentTime,
-                        action: 'click',
-                        targetId: currentButton
-                    });
-                    
-                    currentTime += Math.floor(Math.random() * 14000) + 1000;
-                    
-                    if (currentButton === 'Power') currentButton = Math.random() > 0.5 ? 'Home' : 'Netflix';
-                    else if (currentButton === 'Home') currentButton = ['Netflix', 'YouTube', 'Settings'][Math.floor(Math.random() * 3)];
-                    else currentButton = mockButtons[Math.floor(Math.random() * mockButtons.length)];
-                }
+            const btns = ['Power', 'Home', 'Netflix', 'YouTube', 'Vol+', 'Vol-', 'CH+', 'CH-'];
+            const sid = 'test_' + Math.random().toString(36).substr(2, 5);
+            let time = Date.now() - 3600000;
+            for (let i=0; i<8; i++) {
+                await addDoc(collection(db, 'artifacts', appId, 'public', 'data', 'ui_events'), {
+                    sessionId: sid, timestamp: time, targetId: btns[Math.floor(Math.random()*btns.length)]
+                });
+                time += Math.floor(Math.random()*10000) + 2000;
             }
-            
             iconRefresh.classList.remove('animate-spin');
             btnGenerateMock.disabled = false;
-        });
-
+        };
     </script>
 </body>
 </html>
