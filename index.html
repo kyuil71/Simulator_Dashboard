@@ -163,7 +163,7 @@
         const db = getFirestore(app);
 
         let currentUser = null;
-        let currentRawData = [];
+        let currentFormattedData = ""; // [변경] 깔끔한 리포트를 저장할 변수
 
         const CORE_BUTTONS = [
             'power-button', 'home-button', 'gemini-button', 'btn-music',
@@ -196,8 +196,6 @@
         renderInitialGrid();
 
         const processAndRender = (events) => {
-            currentRawData = events; 
-
             const stats = { totalClicks: events.length, sessions: new Set(), buttonCounts: {}, dwellTimes: {}, flows: [] };
             const sessions = {};
             CORE_BUTTONS.forEach(btn => stats.buttonCounts[btn] = 0);
@@ -263,7 +261,8 @@
 
             // Dwell Times Chart
             const dwellArr = Object.entries(stats.dwellTimes).map(([id, data]) => ({ id, avgTime: Math.round(data.total / data.count / 1000) })).sort((a, b) => b.avgTime - a.avgTime).slice(0, 10);
-            document.getElementById('stat-avg-time').innerText = dwellArr.length ? Math.round(dwellArr.reduce((a,c)=>a+c.avgTime,0)/dwellArr.length) + '초' : '0초';
+            const avgDwellVal = dwellArr.length ? Math.round(dwellArr.reduce((a,c)=>a+c.avgTime,0)/dwellArr.length) + '초' : '0초';
+            document.getElementById('stat-avg-time').innerText = avgDwellVal;
             const dwellChartEl = document.getElementById('chart-dwell-times');
             dwellChartEl.innerHTML = dwellArr.length ? dwellArr.map(item => `
                 <div class="relative mb-3 last:mb-0">
@@ -295,6 +294,44 @@
                     <div class="flex flex-col"><span class="font-bold text-slate-800">${e.targetId || '알 수 없음'}</span><span class="text-slate-400 text-sm">${e.sessionId.substring(0,8)}...</span></div>
                     <span class="text-slate-500 font-medium">${new Date(e.timestamp).toLocaleTimeString('ko-KR')}</span>
                 </div>`).join('') : '<p class="text-slate-400 text-center py-4">최근 이벤트가 없습니다.</p>';
+
+            // [추가/변경] 보기 쉬운 텍스트 리포트 생성 로직
+            let report = `📊 [TV 시뮬레이터 UX 분석 요약]\n`;
+            report += `===================================\n`;
+            report += `- 총 클릭 수: ${stats.totalClicks}회\n`;
+            report += `- 테스트 세션 수: ${stats.sessions.size}개\n`;
+            report += `- 평균 체류 시간: ${avgDwellVal}\n\n`;
+
+            report += `🏆 [가장 많이 누른 버튼 Top 10]\n`;
+            if (topButtons.length) {
+                topButtons.forEach((btn, idx) => {
+                    report += `${idx + 1}. ${btn.id} (${btn.count}회)\n`;
+                });
+            } else {
+                report += `데이터 없음\n`;
+            }
+            report += `\n`;
+
+            report += `⏳ [누른 후 체류 시간이 긴 버튼 Top 10]\n`;
+            if (dwellArr.length) {
+                dwellArr.forEach((item, idx) => {
+                    report += `${idx + 1}. ${item.id} (${item.avgTime}초)\n`;
+                });
+            } else {
+                report += `데이터 없음\n`;
+            }
+            report += `\n`;
+
+            report += `🔄 [주요 행동 플로우 패턴]\n`;
+            if (topFlows.length) {
+                topFlows.forEach((flow, idx) => {
+                    report += `- ${flow.path} (${flow.count}회 반복)\n`;
+                });
+            } else {
+                report += `데이터 없음\n`;
+            }
+
+            currentFormattedData = report;
         };
 
         onAuthStateChanged(auth, (user) => {
@@ -337,16 +374,15 @@
             }
         });
 
-        // 데이터 복사 기능
+        // [변경] 데이터 복사 기능 (포맷팅된 텍스트 리포트 사용)
         btnCopyData.addEventListener('click', () => {
-            if (!currentRawData || currentRawData.length === 0) {
+            if (!currentFormattedData) {
                 alert('복사할 데이터가 없습니다.');
                 return;
             }
             
-            const dataString = JSON.stringify(currentRawData, null, 2);
-            navigator.clipboard.writeText(dataString).then(() => {
-                alert('현재 상태의 모든 데이터가 JSON 형식으로 클립보드에 복사되었습니다.');
+            navigator.clipboard.writeText(currentFormattedData).then(() => {
+                alert('현재 상태의 분석 리포트가 클립보드에 복사되었습니다. 메모장 등에 붙여넣기 해보세요!');
             }).catch(err => {
                 console.error('복사 실패:', err);
                 alert('클립보드 복사에 실패했습니다. 브라우저 권한을 확인해 주세요.');
