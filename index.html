@@ -27,7 +27,7 @@
             line-height: 1.5 !important;
         }
 
-        /* 부드러운 그림자 효과 (이미지 참고) */
+        /* 부드러운 그림자 효과 */
         .card-shadow {
             box-shadow: 0 1px 3px rgba(0,0,0,0.05), 0 1px 2px rgba(0,0,0,0.03);
         }
@@ -35,7 +35,6 @@
 </head>
 <body class="text-slate-800 font-sans h-screen flex flex-col overflow-hidden pb-[70px]">
 
-    <!-- Header -->
     <header class="bg-white px-5 py-4 flex items-center justify-between sticky top-0 z-20 border-b border-slate-100 shadow-sm shrink-0">
         <div class="flex items-center space-x-2">
             <div class="bg-blue-600 p-1.5 rounded-lg text-white">
@@ -49,22 +48,17 @@
         </button>
     </header>
 
-    <!-- Main Scrollable Area -->
     <main class="flex-1 w-full overflow-y-auto px-4 py-5 relative">
         
-        <!-- Loading Indicator -->
         <div id="loading-indicator" class="absolute inset-0 flex items-center justify-center bg-slate-50/80 backdrop-blur-sm z-30">
             <div class="flex flex-col items-center p-6 bg-white rounded-2xl shadow-xl">
                 <p class="font-bold text-slate-600 force-16px" id="loading-text">데이터 동기화 중...</p>
             </div>
         </div>
 
-        <!-- Tab 1: Dashboard -->
         <div id="tab-dashboard" class="tab-content active space-y-5">
             
-            <!-- Summary Cards (이미지 스타일 반영) -->
             <div class="flex space-x-3 overflow-x-auto hide-scrollbar snap-x pb-2">
-                <!-- 총 클릭 수 -->
                 <div class="snap-start shrink-0 w-[160px] bg-white border border-slate-100 p-5 rounded-2xl card-shadow flex flex-col justify-center">
                     <div class="flex items-center space-x-3 mb-2">
                         <div class="w-10 h-10 rounded-full bg-indigo-50 flex items-center justify-center text-indigo-500">
@@ -74,7 +68,6 @@
                     </div>
                     <p id="stat-total-clicks" class="text-3xl font-bold text-slate-800 ml-1">0</p>
                 </div>
-                <!-- 테스트 세션 수 -->
                 <div class="snap-start shrink-0 w-[160px] bg-white border border-slate-100 p-5 rounded-2xl card-shadow flex flex-col justify-center">
                     <div class="flex items-center space-x-3 mb-2">
                         <div class="w-10 h-10 rounded-full bg-emerald-50 flex items-center justify-center text-emerald-500">
@@ -84,7 +77,6 @@
                     </div>
                     <p id="stat-total-sessions" class="text-3xl font-bold text-slate-800 ml-1">0</p>
                 </div>
-                <!-- 평균 체류 시간 -->
                 <div class="snap-start shrink-0 w-[160px] bg-white border border-slate-100 p-5 rounded-2xl card-shadow flex flex-col justify-center">
                     <div class="flex items-center space-x-3 mb-2">
                         <div class="w-10 h-10 rounded-full bg-amber-50 flex items-center justify-center text-amber-500">
@@ -96,7 +88,6 @@
                 </div>
             </div>
 
-            <!-- Most Clicked Buttons Chart (이미지 스타일 반영) -->
             <div class="bg-white rounded-2xl card-shadow border border-slate-100 p-5">
                 <h2 class="font-bold text-slate-800 mb-6 text-lg flex items-center">
                     <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="mr-2 text-blue-500"><path d="M3 3v18h18"/><path d="M18 17V9"/><path d="M13 17V5"/><path d="M8 17v-3"/></svg>
@@ -107,7 +98,6 @@
                 </div>
             </div>
 
-            <!-- Dwell Times Chart (이미지 스타일 반영) -->
             <div class="bg-white rounded-2xl card-shadow border border-slate-100 p-5">
                 <h2 class="font-bold text-slate-800 mb-6 text-lg flex items-center">
                     <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="mr-2 text-amber-500"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
@@ -118,39 +108,25 @@
                 </div>
             </div>
 
-            <!-- Overall Status Panel (0부터 시작하는 전체 버튼 격자) -->
             <div class="bg-white rounded-2xl card-shadow border border-slate-100 p-5">
-                <h2 class="font-bold text-slate-800 mb-4 text-lg">
-                    전체 리모컨 버튼 현황
-                </h2>
+                <h2 class="font-bold text-slate-800 mb-4 text-lg">전체 리모컨 버튼 현황</h2>
                 <div id="grid-all-buttons" class="grid grid-cols-3 gap-3">
-                    <!-- Javascript will render this -->
-                </div>
+                    </div>
             </div>
         </div>
 
-        <!-- Tab 2: Flows -->
         <div id="tab-flows" class="tab-content space-y-5">
             <div class="bg-white rounded-2xl card-shadow border border-slate-100 p-5">
-                <h2 class="font-bold text-slate-800 mb-5 text-lg">
-                    주요 행동 플로우 패턴
-                </h2>
-                <div id="list-flow-patterns" class="space-y-4 force-16px">
-                    <!-- 데이터 렌더링 영역 -->
-                </div>
+                <h2 class="font-bold text-slate-800 mb-5 text-lg">주요 행동 플로우 패턴</h2>
+                <div id="list-flow-patterns" class="space-y-4 force-16px"></div>
             </div>
-
             <div class="bg-white rounded-2xl card-shadow border border-slate-100 p-5">
                 <h2 class="font-bold text-slate-800 mb-4 text-lg">실시간 로그</h2>
-                <div class="space-y-3 force-16px" id="list-recent-events">
-                    <!-- 데이터 렌더링 영역 -->
-                </div>
+                <div class="space-y-3 force-16px" id="list-recent-events"></div>
             </div>
         </div>
-
     </main>
 
-    <!-- Bottom Navigation (Mobile Fixed) -->
     <nav class="fixed bottom-0 left-0 w-full bg-white border-t border-slate-200 flex justify-around items-center pb-safe z-40 h-[70px] shadow-[0_-4px_15px_-10px_rgba(0,0,0,0.1)]">
         <button onclick="switchTab('dashboard')" id="nav-dashboard" class="nav-btn active flex flex-col items-center justify-center w-full h-full text-slate-400 transition-colors">
             <span style="font-size: 20px !important;">대시보드</span>
@@ -160,33 +136,28 @@
         </button>
     </nav>
 
-    <!-- SafeArea Padding for iOS -->
-    <style>
-        .pb-safe { padding-bottom: env(safe-area-inset-bottom); }
-    </style>
+    <style>.pb-safe { padding-bottom: env(safe-area-inset-bottom); }</style>
 
-    <!-- Firebase & Logic Script -->
     <script type="module">
         import { initializeApp } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-app.js";
         import { getAuth, signInAnonymously, onAuthStateChanged } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-auth.js";
-        import { getFirestore, collection, addDoc, onSnapshot, query } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-firestore.js";
+        import { getFirestore, collection, onSnapshot, query, writeBatch, doc } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-firestore.js";
 
-        // 배포 환경을 위한 실제 API 키 및 설정 적용
         const firebaseConfig = {
             apiKey: "AIzaSyAAYNgibjfk61ZVOiCGeIwpkornY700KtM",
             authDomain: "prototype-kyuil.firebaseapp.com",
             projectId: "prototype-kyuil",
             appId: "1:64201667970:web:ae247a6e7021a267a34b9b"
         };
-        const appId = 'tv-simulator-mobile-test';
+        
+        // [수정 완료] 센서 코드와 완벽하게 일치시킴
+        const appId = 'tv-simulator-v1'; 
 
         const app = initializeApp(firebaseConfig);
         const auth = getAuth(app);
         const db = getFirestore(app);
 
         let currentUser = null;
-
-        // 이미지에 나온 실제 버튼 ID들을 바탕으로 핵심 버튼 재구성
         const CORE_BUTTONS = [
             'power-button', 'home-button', 'gemini-button', 'btn-music',
             'vol-up', 'vol-down', 'mute-button', 'btn-standby',
@@ -197,18 +168,14 @@
         const loadingIndicator = document.getElementById('loading-indicator');
         const btnGenerateMock = document.getElementById('btn-generate-mock');
         
-        // 탭 전환 함수
-        window.switchTab = function(tabName) {
+        window.switchTab = (tabName) => {
             document.querySelectorAll('.tab-content').forEach(el => el.classList.remove('active'));
             document.querySelectorAll('.nav-btn').forEach(el => el.classList.remove('active'));
-            
             document.getElementById(`tab-${tabName}`).classList.add('active');
             document.getElementById(`nav-${tabName}`).classList.add('active');
-            
             document.querySelector('main').scrollTop = 0;
         };
 
-        // 초기 격자 0으로 그리기
         const renderInitialGrid = () => {
             const gridEl = document.getElementById('grid-all-buttons');
             gridEl.innerHTML = CORE_BUTTONS.map(btn => `
@@ -220,24 +187,14 @@
         };
         renderInitialGrid();
 
-        // 분석 및 렌더링 로직
         const processAndRender = (events) => {
-            const stats = {
-                totalClicks: events.length,
-                sessions: new Set(),
-                buttonCounts: {},
-                dwellTimes: {}, 
-                flows: [],
-            };
-
+            const stats = { totalClicks: events.length, sessions: new Set(), buttonCounts: {}, dwellTimes: {}, flows: [] };
             const sessions = {};
             CORE_BUTTONS.forEach(btn => stats.buttonCounts[btn] = 0);
 
             events.forEach(event => {
                 stats.sessions.add(event.sessionId);
-                if (event.targetId) {
-                    stats.buttonCounts[event.targetId] = (stats.buttonCounts[event.targetId] || 0) + 1;
-                }
+                if (event.targetId) stats.buttonCounts[event.targetId] = (stats.buttonCounts[event.targetId] || 0) + 1;
                 if (!sessions[event.sessionId]) sessions[event.sessionId] = [];
                 sessions[event.sessionId].push(event);
             });
@@ -247,12 +204,12 @@
                 const flowPath = sessionEvents.map(e => e.targetId).filter(Boolean);
                 if (flowPath.length > 0) stats.flows.push({ path: flowPath });
 
-                for (let i = 0; i < sessionEvents.length - 1; i++) {
+                for (let i = 0; i < sessionEvents.length; i++) {
                     const curr = sessionEvents[i];
-                    const next = sessionEvents[i+1];
-                    const timeDiff = next.timestamp - curr.timestamp;
+                    let timeDiff = 3000; // 마지막 클릭 보정 3초
+                    if (i < sessionEvents.length - 1) timeDiff = sessionEvents[i+1].timestamp - curr.timestamp;
 
-                    if (curr.targetId && timeDiff > 0 && timeDiff < 600000) { 
+                    if (curr.targetId && timeDiff > 0 && timeDiff < 600000) {
                         if (!stats.dwellTimes[curr.targetId]) stats.dwellTimes[curr.targetId] = { total: 0, count: 0 };
                         stats.dwellTimes[curr.targetId].total += timeDiff;
                         stats.dwellTimes[curr.targetId].count += 1;
@@ -260,123 +217,71 @@
                 }
             });
 
-            // 1. Update Grid
+            // Grid Update
             CORE_BUTTONS.forEach(btn => {
                 const count = stats.buttonCounts[btn] || 0;
-                const elId = `grid-item-${btn.replace(/\s+/g, '-')}`;
-                const el = document.getElementById(elId);
+                const el = document.getElementById(`grid-item-${btn.replace(/\s+/g, '-')}`);
                 if (el) {
                     const countEl = el.querySelector('.count-val');
                     countEl.innerText = count;
-                    if (count > 0) el.classList.replace('bg-slate-50', 'bg-blue-50');
-                    if (count > 0) countEl.classList.replace('text-slate-800', 'text-blue-700');
+                    if (count > 0) {
+                        el.classList.replace('bg-slate-50', 'bg-blue-50');
+                        countEl.classList.replace('text-slate-800', 'text-blue-700');
+                    }
                 }
             });
 
-            // 2. Summary Stats
             document.getElementById('stat-total-clicks').innerText = stats.totalClicks;
             document.getElementById('stat-total-sessions').innerText = stats.sessions.size;
 
-            // 3. Top Buttons Chart (이미지 반영 스타일)
-            const topButtons = Object.entries(stats.buttonCounts)
-                .map(([id, count]) => ({ id, count })).filter(b => b.count > 0).sort((a, b) => b.count - a.count).slice(0, 10);
-            
+            // Top Buttons Chart
+            const topButtons = Object.entries(stats.buttonCounts).map(([id, count]) => ({ id, count })).filter(b => b.count > 0).sort((a, b) => b.count - a.count).slice(0, 10);
             const btnChartEl = document.getElementById('chart-top-buttons');
-            if (topButtons.length === 0) {
-                btnChartEl.innerHTML = '<p class="text-slate-400 text-center py-4">데이터가 없습니다.</p>';
-            } else {
-                const maxCount = topButtons[0].count;
-                btnChartEl.innerHTML = topButtons.map(btn => `
-                    <div class="relative mb-3 last:mb-0">
-                        <div class="flex justify-between items-end mb-2">
-                            <span class="text-slate-700 font-medium">${btn.id}</span>
-                            <span class="text-slate-800 font-bold">${btn.count}회</span>
-                        </div>
-                        <div class="w-full bg-slate-100 rounded-full h-2.5">
-                            <div class="bg-[#3b82f6] h-2.5 rounded-full" style="width: ${(btn.count / maxCount) * 100}%"></div>
-                        </div>
+            btnChartEl.innerHTML = topButtons.length ? topButtons.map(btn => `
+                <div class="relative mb-3 last:mb-0">
+                    <div class="flex justify-between items-end mb-2">
+                        <span class="text-slate-700 font-medium">${btn.id}</span>
+                        <span class="text-slate-800 font-bold">${btn.count}회</span>
                     </div>
-                `).join('');
-            }
+                    <div class="w-full bg-slate-100 rounded-full h-2.5">
+                        <div class="bg-[#3b82f6] h-2.5 rounded-full" style="width: ${(btn.count / topButtons[0].count) * 100}%"></div>
+                    </div>
+                </div>`).join('') : '<p class="text-slate-400 text-center py-4">데이터가 없습니다.</p>';
 
-            // 4. Dwell Times (이미지 반영 스타일)
-            const dwellArr = Object.entries(stats.dwellTimes)
-                .map(([id, data]) => ({ id, avgTime: Math.round(data.total / data.count / 1000) }))
-                .sort((a, b) => b.avgTime - a.avgTime).slice(0, 10);
-            
-            const sumDwell = dwellArr.reduce((acc, curr) => acc + curr.avgTime, 0);
-            document.getElementById('stat-avg-time').innerText = dwellArr.length > 0 ? Math.round(sumDwell / dwellArr.length) + '초' : '0초';
-
+            // Dwell Times Chart
+            const dwellArr = Object.entries(stats.dwellTimes).map(([id, data]) => ({ id, avgTime: Math.round(data.total / data.count / 1000) })).sort((a, b) => b.avgTime - a.avgTime).slice(0, 10);
+            document.getElementById('stat-avg-time').innerText = dwellArr.length ? Math.round(dwellArr.reduce((a,c)=>a+c.avgTime,0)/dwellArr.length) + '초' : '0초';
             const dwellChartEl = document.getElementById('chart-dwell-times');
-            if (dwellArr.length === 0) {
-                dwellChartEl.innerHTML = '<p class="text-slate-400 text-center py-4">데이터가 없습니다.</p>';
-            } else {
-                const maxDwell = dwellArr[0].avgTime;
-                dwellChartEl.innerHTML = dwellArr.map(item => `
-                    <div class="relative mb-3 last:mb-0">
-                        <div class="flex justify-between items-end mb-2">
-                            <span class="text-slate-700 font-medium">${item.id}</span>
-                            <span class="text-slate-800 font-bold">${item.avgTime}초</span>
-                        </div>
-                        <div class="w-full bg-slate-100 rounded-full h-2.5">
-                            <div class="bg-[#fbbf24] h-2.5 rounded-full" style="width: ${(item.avgTime / maxDwell) * 100}%"></div>
-                        </div>
+            dwellChartEl.innerHTML = dwellArr.length ? dwellArr.map(item => `
+                <div class="relative mb-3 last:mb-0">
+                    <div class="flex justify-between items-end mb-2">
+                        <span class="text-slate-700 font-medium">${item.id}</span>
+                        <span class="text-slate-800 font-bold">${item.avgTime}초</span>
                     </div>
-                `).join('');
-            }
+                    <div class="w-full bg-slate-100 rounded-full h-2.5">
+                        <div class="bg-[#fbbf24] h-2.5 rounded-full" style="width: ${(item.avgTime / dwellArr[0].avgTime) * 100}%"></div>
+                    </div>
+                </div>`).join('') : '<p class="text-slate-400 text-center py-4">데이터가 없습니다.</p>';
 
-            // 5. Flows
+            // Flows
             const flowPatterns = {};
-            stats.flows.forEach(f => {
-                const pathStr = f.path.join(' → ');
-                if(f.path.length > 1) flowPatterns[pathStr] = (flowPatterns[pathStr] || 0) + 1;
-            });
-            const topFlows = Object.entries(flowPatterns)
-                .map(([path, count]) => ({ path, count })).sort((a, b) => b.count - a.count).slice(0, 6);
-            
-            const flowEl = document.getElementById('list-flow-patterns');
-            if(topFlows.length === 0){
-                flowEl.innerHTML = '<p class="text-slate-400 text-center py-4">데이터가 없습니다.</p>';
-            } else {
-                flowEl.innerHTML = topFlows.map(flow => `
-                    <div class="p-4 border border-slate-100 bg-slate-50 rounded-xl relative mb-3 last:mb-0">
-                        <div class="flex justify-between items-center mb-3">
-                            <span class="font-bold text-emerald-600 bg-emerald-100 px-3 py-1 rounded-full text-sm">${flow.count}회 반복됨</span>
-                        </div>
-                        <div class="text-slate-700 font-medium leading-relaxed overflow-x-auto whitespace-nowrap hide-scrollbar pb-1">
-                            ${flow.path.split(' → ').map((step, idx, arr) => `
-                                <span class="inline-block bg-white border border-slate-200 px-2 py-1 rounded shadow-sm">${step}</span>
-                                ${idx < arr.length - 1 ? '<span class="text-slate-400 mx-1">→</span>' : ''}
-                            `).join('')}
-                        </div>
+            stats.flows.forEach(f => { if(f.path.length > 1) { const p = f.path.join(' → '); flowPatterns[p] = (flowPatterns[p] || 0) + 1; }});
+            const topFlows = Object.entries(flowPatterns).map(([path, count]) => ({ path, count })).sort((a, b) => b.count - a.count).slice(0, 6);
+            document.getElementById('list-flow-patterns').innerHTML = topFlows.length ? topFlows.map(flow => `
+                <div class="p-4 border border-slate-100 bg-slate-50 rounded-xl mb-3 last:mb-0">
+                    <span class="font-bold text-emerald-600 bg-emerald-100 px-3 py-1 rounded-full text-sm mb-3 inline-block">${flow.count}회 반복됨</span>
+                    <div class="text-slate-700 font-medium overflow-x-auto hide-scrollbar whitespace-nowrap pb-1">
+                        ${flow.path.split(' → ').map((s, i, a) => `<span class="bg-white border px-2 py-1 rounded shadow-sm">${s}</span>${i < a.length-1 ? '<span class="mx-1 text-slate-400">→</span>' : ''}`).join('')}
                     </div>
-                `).join('');
-            }
+                </div>`).join('') : '<p class="text-slate-400 text-center py-4">데이터가 없습니다.</p>';
 
-            // 6. Recent Logs
+            // Recent Logs
             const recentEvents = [...events].sort((a, b) => b.timestamp - a.timestamp).slice(0, 15);
-            const recentEl = document.getElementById('list-recent-events');
-            if(recentEvents.length === 0){
-                recentEl.innerHTML = '<p class="text-slate-400 text-center py-4">최근 이벤트가 없습니다.</p>';
-            } else {
-                recentEl.innerHTML = recentEvents.map(event => `
-                    <div class="flex items-center justify-between p-3 border-b border-slate-100 last:border-0">
-                        <div class="flex flex-col">
-                            <span class="font-bold text-slate-800">${event.targetId || '알 수 없음'}</span>
-                            <span class="text-slate-400 text-sm">${event.sessionId.substring(0,8)}...</span>
-                        </div>
-                        <span class="text-slate-500 font-medium">${new Date(event.timestamp).toLocaleTimeString('ko-KR', {hour: '2-digit', minute:'2-digit', second:'2-digit'})}</span>
-                    </div>
-                `).join('');
-            }
-        };
-
-        const initDashboard = async () => {
-            try {
-                await signInAnonymously(auth);
-            } catch (error) {
-                document.getElementById('loading-text').innerText = "인증 오류 발생";
-            }
+            document.getElementById('list-recent-events').innerHTML = recentEvents.length ? recentEvents.map(e => `
+                <div class="flex items-center justify-between p-3 border-b border-slate-100 last:border-0">
+                    <div class="flex flex-col"><span class="font-bold text-slate-800">${e.targetId || '알 수 없음'}</span><span class="text-slate-400 text-sm">${e.sessionId.substring(0,8)}...</span></div>
+                    <span class="text-slate-500 font-medium">${new Date(e.timestamp).toLocaleTimeString('ko-KR')}</span>
+                </div>`).join('') : '<p class="text-slate-400 text-center py-4">최근 이벤트가 없습니다.</p>';
         };
 
         onAuthStateChanged(auth, (user) => {
@@ -392,41 +297,29 @@
             }
         });
 
-        initDashboard();
+        signInAnonymously(auth).catch(() => document.getElementById('loading-text').innerText = "인증 오류");
 
-        // 테스트 데이터 생성 로직
         btnGenerateMock.addEventListener('click', async () => {
             if (!currentUser) return;
             btnGenerateMock.disabled = true;
             document.getElementById('icon-refresh').classList.add('animate-spin');
             
+            const batch = writeBatch(db);
             const eventsRef = collection(db, 'artifacts', appId, 'public', 'data', 'ui_events');
             
-            const numSessions = Math.floor(Math.random() * 2) + 1;
-            for (let i = 0; i < numSessions; i++) {
-                const sessionId = `mock-${Math.random().toString(36).substr(2, 5)}`;
-                let currentTime = Date.now() - Math.floor(Math.random() * 86400000); 
-                const numClicks = Math.floor(Math.random() * 8) + 5; 
-                
-                let currentButton = 'btn-standby';
-                
-                for (let j = 0; j < numClicks; j++) {
-                    await addDoc(eventsRef, {
-                        sessionId, timestamp: currentTime, action: 'click', targetId: currentButton
-                    });
-                    currentTime += Math.floor(Math.random() * 9000) + 1000;
-                    currentButton = CORE_BUTTONS[Math.floor(Math.random() * CORE_BUTTONS.length)];
+            for (let i = 0; i < (Math.floor(Math.random() * 2) + 1); i++) {
+                const sid = `mock-${Math.random().toString(36).substr(2, 5)}`;
+                let time = Date.now() - Math.floor(Math.random() * 86400000);
+                let btn = 'btn-standby';
+                for (let j = 0; j < (Math.floor(Math.random() * 8) + 5); j++) {
+                    batch.set(doc(eventsRef), { sessionId: sid, timestamp: time, action: 'click', targetId: btn });
+                    time += Math.floor(Math.random() * 9000) + 1000;
+                    btn = CORE_BUTTONS[Math.floor(Math.random() * CORE_BUTTONS.length)];
                 }
             }
-            
-            setTimeout(() => {
-                document.getElementById('icon-refresh').classList.remove('animate-spin');
-                btnGenerateMock.disabled = false;
-            }, 1000);
+            await batch.commit();
+            setTimeout(() => { document.getElementById('icon-refresh').classList.remove('animate-spin'); btnGenerateMock.disabled = false; }, 1000);
         });
-
     </script>
 </body>
 </html>
-
-복사하셔서 바로 활용하시길 바랍니다! 더 수정이 필요하신 부분이 있다면 언제든 말씀해 주십시오.
