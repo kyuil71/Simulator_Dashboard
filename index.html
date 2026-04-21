@@ -21,6 +21,12 @@
         .nav-btn.active { color: #2563eb; } /* blue-600 */
         .nav-btn.active svg { stroke: #2563eb; fill: #eff6ff; } /* blue-50 */
         .nav-btn.active span { font-weight: 700; }
+
+        /* 최소 글자 크기 16px 강제 적용 */
+        .text-\\[9px\\], .text-\\[10px\\], .text-\\[11px\\], .text-xs, .text-sm {
+            font-size: 16px !important;
+            line-height: 1.5 !important;
+        }
     </style>
 </head>
 <body class="bg-slate-50 text-slate-800 font-sans h-screen flex flex-col overflow-hidden pb-[70px]">
@@ -28,9 +34,6 @@
     <!-- Header (Mobile Optimized) -->
     <header class="bg-white px-4 py-3 flex items-center justify-between sticky top-0 z-20 shadow-sm shrink-0">
         <div class="flex items-center space-x-2">
-            <div class="bg-blue-600 p-1.5 rounded text-white">
-                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"></polyline></svg>
-            </div>
             <h1 class="text-base font-bold text-slate-900 tracking-tight">TV UX 분석기</h1>
         </div>
         <button id="btn-generate-mock" class="flex items-center p-2 bg-blue-50 text-blue-600 rounded-full active:bg-blue-100 transition-colors">
@@ -52,10 +55,9 @@
         <!-- Tab 1: Dashboard -->
         <div id="tab-dashboard" class="tab-content active space-y-5">
             
-            <!-- Overall Status Panel (NEW) -->
+            <!-- Overall Status Panel -->
             <div class="bg-white rounded-2xl shadow-sm border border-slate-100 p-4">
-                <h2 class="text-sm font-bold text-slate-800 mb-3 flex items-center">
-                    <span class="w-1.5 h-4 bg-blue-500 rounded-full mr-2"></span>
+                <h2 class="text-sm font-bold text-slate-800 mb-3">
                     전체 리모컨 버튼 현황
                 </h2>
                 <!-- All buttons start with 0 -->
@@ -64,7 +66,7 @@
                 </div>
             </div>
 
-            <!-- Summary Cards (Horizontal Scroll on Mobile) -->
+            <!-- Summary Cards -->
             <div class="flex space-x-3 overflow-x-auto hide-scrollbar snap-x pb-2">
                 <div class="snap-start shrink-0 w-36 bg-gradient-to-br from-indigo-500 to-blue-600 p-4 rounded-2xl shadow-sm text-white">
                     <p class="text-xs font-medium opacity-80 mb-1">총 클릭 수</p>
@@ -82,8 +84,7 @@
 
             <!-- Most Clicked Buttons Chart -->
             <div class="bg-white rounded-2xl shadow-sm border border-slate-100 p-5">
-                <h2 class="text-sm font-bold text-slate-800 mb-4 flex items-center">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="mr-1.5 text-rose-500"><path d="M12 2v20"/><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg>
+                <h2 class="text-sm font-bold text-slate-800 mb-4">
                     가장 많이 누른 순위
                 </h2>
                 <div id="chart-top-buttons" class="space-y-3.5">
@@ -93,8 +94,7 @@
 
             <!-- Dwell Times -->
             <div class="bg-white rounded-2xl shadow-sm border border-slate-100 p-5">
-                <h2 class="text-sm font-bold text-slate-800 mb-4 flex items-center">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="mr-1.5 text-amber-500"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+                <h2 class="text-sm font-bold text-slate-800 mb-4">
                     클릭 후 체류 시간 (초)
                 </h2>
                 <div id="chart-dwell-times" class="space-y-3.5">
@@ -107,8 +107,7 @@
         <div id="tab-flows" class="tab-content space-y-5">
             <div class="bg-white rounded-2xl shadow-sm border border-slate-100 p-4">
                 <div class="flex items-center justify-between mb-4">
-                    <h2 class="text-sm font-bold text-slate-800 flex items-center">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="mr-1.5 text-emerald-500"><circle cx="6" cy="19" r="3"/><path d="M9 19h8.5a3.5 3.5 0 0 0 0-7h-11a3.5 3.5 0 0 1 0-7H15"/><circle cx="18" cy="5" r="3"/></svg>
+                    <h2 class="text-sm font-bold text-slate-800">
                         주요 행동 플로우 패턴
                     </h2>
                 </div>
@@ -125,39 +124,17 @@
             </div>
         </div>
 
-        <!-- Tab 3: Integration -->
-        <div id="tab-integration" class="tab-content">
-            <div class="bg-white rounded-2xl shadow-sm border border-slate-100 p-5">
-                <h2 class="text-sm font-bold text-slate-800 mb-3">데이터 추적 스크립트</h2>
-                <p class="text-slate-500 text-xs mb-4">
-                    아래 코드를 TV 시뮬레이터 <code class="bg-slate-100 text-slate-700 px-1 rounded">index.html</code>의 맨 아래에 붙여넣으세요.
-                </p>
-                
-                <div class="bg-slate-800 rounded-xl p-3 relative group">
-                    <pre class="text-slate-300 text-[10px] font-mono overflow-x-auto whitespace-pre-wrap"><code id="code-snippet"></code></pre>
-                </div>
-                <button onclick="copyIntegrationCode()" class="w-full mt-3 bg-indigo-600 active:bg-indigo-700 text-white font-medium py-3 rounded-xl text-sm flex justify-center items-center shadow-sm">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="mr-2"><rect width="14" height="14" x="8" y="8" rx="2" ry="2"/><path d="M4 16c-1.1 0-2-.9-2-2V4c0-1.1.9-2 2-2h10c1.1 0 2 .9 2 2"/></svg>
-                    코드 전체 복사하기
-                </button>
-            </div>
-        </div>
-
     </main>
 
     <!-- Bottom Navigation (Mobile Fixed) -->
     <nav class="fixed bottom-0 left-0 w-full bg-white border-t border-slate-200 flex justify-around items-center pb-safe z-40 h-[70px] px-2 shadow-[0_-4px_15px_-10px_rgba(0,0,0,0.1)]">
         <button onclick="switchTab('dashboard')" id="nav-dashboard" class="nav-btn active flex flex-col items-center justify-center w-full h-full text-slate-400 transition-colors">
             <svg class="mb-1 transition-colors" xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="7" height="9" x="3" y="3" rx="1"/><rect width="7" height="5" x="14" y="3" rx="1"/><rect width="7" height="9" x="14" y="12" rx="1"/><rect width="7" height="5" x="3" y="16" rx="1"/></svg>
-            <span class="text-[10px]">대시보드</span>
+            <span style="font-size: 20px !important;">대시보드</span>
         </button>
         <button onclick="switchTab('flows')" id="nav-flows" class="nav-btn flex flex-col items-center justify-center w-full h-full text-slate-400 transition-colors">
             <svg class="mb-1 transition-colors" xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 19h8.5a3.5 3.5 0 0 0 0-7h-11a3.5 3.5 0 0 1 0-7H15"/><circle cx="18" cy="5" r="3"/><circle cx="6" cy="19" r="3"/></svg>
-            <span class="text-[10px]">플로우</span>
-        </button>
-        <button onclick="switchTab('integration')" id="nav-integration" class="nav-btn flex flex-col items-center justify-center w-full h-full text-slate-400 transition-colors">
-            <svg class="mb-1 transition-colors" xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg>
-            <span class="text-[10px]">연동 코드</span>
+            <span style="font-size: 20px !important;">플로우</span>
         </button>
     </nav>
 
@@ -169,17 +146,17 @@
     <!-- Firebase & Logic Script -->
     <script type="module">
         import { initializeApp } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-app.js";
-        import { getAuth, signInAnonymously, signInWithCustomToken, onAuthStateChanged } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-auth.js";
+        import { getAuth, signInAnonymously, onAuthStateChanged } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-auth.js";
         import { getFirestore, collection, addDoc, onSnapshot, query } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-firestore.js";
 
-        // 이 부분은 깃허브 배포 시 본인의 설정으로 교체해 주셔야 합니다.
-        const firebaseConfig = typeof __firebase_config !== 'undefined' ? JSON.parse(__firebase_config) : {
+        // ★ 깃허브 배포 전, 아래 정보를 사용자님의 Firebase 정보로 반드시 교체해 주세요!
+        const firebaseConfig = {
             apiKey: "여기에_API_KEY_입력",
             authDomain: "YOUR_PROJECT.firebaseapp.com",
             projectId: "YOUR_PROJECT",
             appId: "1:1234:web:abcd"
         };
-        const appId = typeof __app_id !== 'undefined' ? __app_id : 'tv-simulator-mobile-test';
+        const appId = 'tv-simulator-mobile-test';
 
         const app = initializeApp(firebaseConfig);
         const auth = getAuth(app);
@@ -228,42 +205,6 @@
             }
             document.body.removeChild(textArea);
         };
-
-        window.copyIntegrationCode = function() {
-            copyToClipboard(document.getElementById('code-snippet').textContent, "연동 코드가");
-        };
-
-        const generateIntegrationScript = () => {
-            // 연동 코드에는 미리보기(캔버스) 설정이 아닌, 사용자가 직접 넣어야 할 템플릿 형태로 출력
-            const userConfig = typeof __firebase_config !== 'undefined' ? `{
-    apiKey: "여기에_API_KEY_입력",
-    authDomain: "본인의-프로젝트.firebaseapp.com",
-    projectId: "본인의-프로젝트",
-    appId: "1:1234:web:abcd"
-  }` : JSON.stringify(firebaseConfig, null, 2);
-
-            const scriptStr = `
-<!-- TV 시뮬레이터 추적 (Body 태그 끝나기 직전에 삽입) -->
-<script type="module">
-  import { initializeApp } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-app.js";
-  import { getAuth, signInAnonymously } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-auth.js";
-  import { getFirestore, collection, addDoc } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-firestore.js";
-  const app = initializeApp(${userConfig});
-  const db = getFirestore(app);
-  let sid = sessionStorage.getItem('tv_test_sid') || 's_' + Date.now() + '_' + Math.random().toString(36).substr(2,5);
-  sessionStorage.setItem('tv_test_sid', sid);
-  signInAnonymously(getAuth(app)).then(() => {
-    document.addEventListener('click', (e) => {
-      let t = e.target.closest('button') || e.target;
-      let id = t.id || t.getAttribute('aria-label') || t.innerText?.trim();
-      if(id && id.length < 30) addDoc(collection(db, 'artifacts', "${appId}", 'public', 'data', 'ui_events'), { sessionId: sid, timestamp: Date.now(), action: 'click', targetId: id });
-    });
-  });
-<\/script>`.trim();
-            document.getElementById('code-snippet').textContent = scriptStr;
-        };
-
-        generateIntegrationScript();
 
         // 초기 격자 0으로 그리기
         const renderInitialGrid = () => {
@@ -438,22 +379,17 @@
 
         const initDashboard = async () => {
             try {
-                // 깃허브 배포 시 API 키가 입력되지 않았을 경우에만 경고를 띄웁니다.
                 if (firebaseConfig.apiKey === "여기에_API_KEY_입력") {
                     document.getElementById('loading-box').innerHTML = `
                         <div class="text-center">
                             <span class="text-rose-500 font-bold block mb-2 text-lg">⚠️ API 키 설정 필요</span>
-                            <p class="text-slate-600 text-sm">깃허브 등에 배포하실 때는 소스 코드 하단의<br><code>firebaseConfig</code> 부분에 실제 API 키를 입력해 주세요.</p>
+                            <p class="text-slate-600 text-sm">깃허브에 배포하시기 전에 소스 코드 하단의<br><code>firebaseConfig</code> 부분에 실제 API 키를 입력해 주세요.</p>
                         </div>
                     `;
                     return;
                 }
 
-                if (typeof __initial_auth_token !== 'undefined' && __initial_auth_token) {
-                    await signInWithCustomToken(auth, __initial_auth_token);
-                } else {
-                    await signInAnonymously(auth);
-                }
+                await signInAnonymously(auth);
             } catch (error) {
                 document.getElementById('loading-text').innerText = "인증 오류 발생: " + error.message;
             }
